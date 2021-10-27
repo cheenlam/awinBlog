@@ -1,0 +1,53 @@
+<div id="page">
+    <!-- ===== aboutBox start ===== -->
+    <div class="aboutBox" ref="aboutBox">
+        <div class="introduce">
+            <div class="title">Liên quan Thúy Diễm</div>
+            <div class="msg">Tôi là Thúy Diễm, năm nay 32 tuổi, sống tại TP Hồ Chí Minh, nhà tôi có mở quán ăn nhỏ. Từ khi dịch bệnh bùng phát, người nhà đều không có công việc, việc kinh doanh của gia đình trở nên khó khăn hơn, gia đình có 5 anh chị em phải chăm sóc,
+                vì thế tính tình bố mẹ trở nên không tốt. Từ khi tôi được bạn bè giới thiệu đến trang wed awin77, chỉ cần có điện thoại là có thể ở nhà làm việc.</div>
+        </div>
+        <div class="avatar">
+            <div class="avatarImg">
+                <img src="images/avatar.jpg">
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== goTop start ===== -->
+    <div class="goTop">
+        <div class="icon" @click="goTop()">
+            <img src="images/goTop.svg">
+        </div>
+    </div>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+
+            };
+        },
+        methods: {
+            setH() {
+                let winW = document.body.offsetWidth;
+                let hdH = indexVue.$refs.hd.offsetHeight;
+                let ftH = indexVue.$refs.ft.offsetHeight;
+                let winH = document.body.offsetHeight;
+
+                this.$refs.aboutBox.style.height = winW > 850 ? `${winH - hdH - ftH - 70}px` : ''
+                this.$refs.aboutBox.style.minHeight = winW <= 850 ? `${winH - hdH - ftH - 70}px` : ''
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+        },
+        mounted() {
+            this.setH();
+            window.addEventListener('resize', this.setH);
+        },
+    }).mount("#page");
+</script>

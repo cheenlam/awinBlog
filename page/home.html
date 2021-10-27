@@ -1,0 +1,86 @@
+<div id="page">
+    <!-- ===== homeBox start ===== -->
+    <div class="homeBox" ref="homeBox">
+        <div class="leftCnt">
+            <div class="avatar">
+                <div class="avatarImg">
+                    <img src="images/avatar.jpg">
+                </div>
+                <p>Thúy Diễm</p>
+            </div>
+        </div>
+        <div class="rightCnt" ref="rightCnt">
+            <template v-for="(item,index) in list">
+                <div class="list">
+                    <div class="article">
+                        <div class="title">{{item.title}}</div>
+                        <p v-html="reBold(item.article)"></p>
+                    </div>
+
+                    <div class="article">
+                        <div class="title">{{item.title2}}</div>
+                    </div>
+
+                    <div class="banner">
+                        <div class="bannerImg">
+                            <img :src="item.img">
+                        </div>
+                        <p>{{item.alt}}</p>
+                    </div>
+    
+                    <div class="note">
+                        <ul>
+                            <template v-for="(item,index) in item.note">
+                                <li v-html="reBold(item)"></li>
+                            </template>
+            </ul>
+        </div>
+    </div>
+    </template>
+</div>
+</div>
+
+<!-- ===== goTop start ===== -->
+<div class="goTop">
+    <div class="icon" @click="goTop()">
+        <img src="images/goTop.svg">
+    </div>
+</div>
+</div>
+
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                list: homeList,
+            };
+        },
+        methods: {
+            setH() {
+                let winW = document.body.offsetWidth;
+                let hdH = indexVue.$refs.hd.offsetHeight;
+                let ftH = indexVue.$refs.ft.offsetHeight;
+                let winH = document.body.offsetHeight;
+                this.$refs.homeBox.style.height = winW > 850 ? `${winH - hdH - ftH - 70}px` : ''
+            },
+            reBold(data) {
+                return data.replaceAll('AWin77', '<span>AWin77</span>');
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+                this.$refs.rightCnt.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+        },
+        mounted() {
+            this.setH();
+            window.addEventListener('resize', this.setH);
+        },
+    }).mount("#page");
+</script>

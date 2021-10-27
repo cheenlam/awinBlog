@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/vue_3.2.19.js"></script>
+    <script src="js/pageData.js"></script>
+    <link rel="stylesheet" href="css/all.css">
+    <title>awin77 Blog</title>
+</head>
+
+<body>
+    <div id="indexBox" class="indexBox">
+        <!-- ===== header start ===== -->
+        <div class="header" ref="hd">
+            <div class="hd_body">
+                <div class="menu" id="hd_menu">
+                    <ul>
+                        <template v-for="(item,index) in hdMenu.list">
+                            <li @click="hdMenu.num = index" 
+                            :class="{'on':index == hdMenu.num}">
+                                <a :href="item.href">{{item.title}}</a>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+                <div class="owner">
+                    <div class="avatar"></div>
+                    <div class="logo">
+                        <img src="images/logo.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== content start ===== -->
+        <div class="content" id="content" ref="content"></div>
+
+        <!-- ===== footer start ===== -->
+        <div class="footer" ref="ft">
+            <div class="ft_body">
+                <div class="logo">
+                    <img src="images/logo.png">
+                </div>
+                <p>ZALO：<span>https://zalo.me/candida</span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let indexVue = Vue.createApp({
+            data() {
+                return {
+                    hdMenu: {
+                        list: hdMenu,
+                        num: 0,
+                    }
+                };
+            },
+            methods: {
+            },
+            mounted() {},
+        }).mount("#indexBox");
+    </script>
+</body>
+
+</html>
