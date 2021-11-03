@@ -123,24 +123,32 @@
         @include rwd(850) {
             margin-right: 0;
             padding-bottom: 20px;
+            display: flex;
         }
         .avatar {
+            margin-bottom: 10px;
             color: #292929;
             font-size: 1rem;
-            @include rwd(850) {
-                display: flex;
-                align-items: flex-end;
-                font-size: 1.2rem;
+            @include rwd(300) {
+                flex: 1;
             }
             .avatarImg {
-                width: 120px;
+                width: 140px;
+                max-width: 140px;
                 margin-bottom: 8px;
                 @include rwd(850) {
-                    margin-bottom: 0px;
-                    margin-right: 8px;
+                    width: auto;
                 }
             }
         }
+        .qrCode{
+            @include rwd(850) {
+               max-width: 140px;
+               margin-left: 5px;
+               flex: 1;
+            }
+        }
+
     }
 
     .list + .list {
