@@ -143,9 +143,9 @@
         }
         .qrCode{
             @include rwd(850) {
-               max-width: 140px;
+               max-width: 150px;
                margin-left: 5px;
-               flex: 1;
+               flex: 1.15;
             }
         }
 
